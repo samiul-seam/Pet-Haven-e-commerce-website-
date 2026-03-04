@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useAuthContext from "../hooks/useAuthContext";
 import {
   HiOutlineMail,
-  HiOutlineCalendar,
   HiOutlineBadgeCheck,
   HiOutlineUserCircle,
 } from "react-icons/hi";
@@ -10,10 +9,14 @@ import { useForm } from "react-hook-form";
 import ProfileButtons from "../components/dashboard/Profile/ProfileButtions";
 import ProfileForm from "../components/dashboard/Profile/ProfileForm";
 import PasswordForm from "../components/dashboard/Profile/PasswordForm";
+import authApiClient from "../services/auth-api-client";
+import useFavoriteContext from "../hooks/useFavoriteContext";
+import { FaHome, FaMobileAlt } from "react-icons/fa";
 
 const Profile = () => {
   const { user, updateUserProfile, changePassword } = useAuthContext();
   const [isEditing, setIsEditing] = useState(false);
+  const [orderCount, setOrderCount] = useState(0);
 
   const {
     register,
@@ -28,6 +31,20 @@ const Profile = () => {
       Object.keys(user).forEach((key) => setValue(key, user[key]));
     }
   }, [user, setValue]);
+
+  useEffect(() => {
+    const fetchAdopt = async () => {
+      try {
+        const res = await authApiClient.get("adoptions/");
+        setOrderCount(res.data.length);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchAdopt();
+  }, []);
+
+  const { favorites } = useFavoriteContext();
 
   const onSubmit = async (data) => {
     try {
@@ -45,6 +62,7 @@ const Profile = () => {
           new_password: data.new_password,
         });
       }
+      setIsEditing(false);
     } catch (error) {
       console.log(error);
     }
@@ -71,9 +89,9 @@ const Profile = () => {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 mt-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column: Basic Info */}
-          <div className="lg:col-span-1 space-y-6">
+        <div className="grid md:grid-cols-2 min:grid-cols-1 gap-8">
+          {/* Left */}
+          <div className="space-y-6">
             <div className="card bg-white shadow-sm border border-slate-100 p-6">
               <form onSubmit={handleSubmit(onSubmit)}>
                 {!isEditing ? (
@@ -96,18 +114,25 @@ const Profile = () => {
                         <span className="text-sm">{user?.email}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
-                        <HiOutlineCalendar
+                        <FaHome 
                           className="text-teal-500"
                           size={20}
                         />
-                        <span className="text-sm">Joined Feb 2026</span>
+                        <span className="text-sm">{user?.address}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-slate-600">
+                        <FaMobileAlt 
+                          className="text-teal-500"
+                          size={20}
+                        />
+                        <span className="text-sm">{user?.phone_number}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
                         <HiOutlineBadgeCheck
                           className="text-teal-500"
                           size={20}
                         />
-                        <span className="badge badge-success badge-outline">
+                        <span className="badge badge-success badge-outline w-50">
                           Verified Owner
                         </span>
                       </div>
@@ -138,29 +163,23 @@ const Profile = () => {
           </div>
 
           {/* Right Column: Details & Activity */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="space-y-6">
             {/* Stats Card */}
             <div className="stats shadow-sm border border-slate-100 w-full bg-white">
               <div className="stat">
-                <div className="stat-title text-slate-500">Total Pets</div>
-                <div className="stat-value text-teal-600 text-3xl">02</div>
-                <div className="stat-desc text-slate-400">Dogs & Cats</div>
+                <div className="stat-title text-slate-500">Favorite</div>
+                <div className="stat-value text-teal-600 text-3xl">{favorites.length}</div>
+                <div className="stat-desc text-slate-400">Pets</div>
               </div>
 
               <div className="stat">
-                <div className="stat-title text-slate-500">Orders</div>
-                <div className="stat-value text-cyan-600 text-3xl">12</div>
-                <div className="stat-desc text-slate-400">Total purchases</div>
-              </div>
-
-              <div className="stat">
-                <div className="stat-title text-slate-500">Points</div>
-                <div className="stat-value text-orange-500 text-3xl">450</div>
-                <div className="stat-desc text-slate-400">Loyalty rewards</div>
+                <div className="stat-title text-slate-500">Adopted</div>
+                <div className="stat-value text-cyan-600 text-3xl">
+                  {orderCount}
+                </div>
+                <div className="stat-desc text-slate-400">Pets</div>
               </div>
             </div>
-            
-
           </div>
         </div>
       </div>
