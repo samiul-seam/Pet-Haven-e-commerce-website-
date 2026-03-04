@@ -4,7 +4,7 @@ import useFetchPet from "../../hooks/useFetchPet";
 import FilterSection from "./FilterSection";
 import ShopCard from "./ShopCard";
 import Pagination from "./Pagination";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router-dom";
 
 const ShopPage = () => {
   const [searchParams] = useSearchParams();
@@ -21,7 +21,14 @@ const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
- 
+  const handleReset = () => {
+    setSelectedCategory("");
+    setSearchQuery("");
+    setSortOrder("");
+    setPriceRange({ min: 0, max: 20000 });
+    setCurrentPage(1);
+  };
+
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory, priceRange, searchQuery, sortOrder]);
@@ -34,7 +41,7 @@ const ShopPage = () => {
     searchQuery,
   );
 
-  const {categories} = useFetchCategory();
+  const { categories } = useFetchCategory();
 
   return (
     <div className="w-full mx-auto py-5 px-3">
@@ -42,12 +49,12 @@ const ShopPage = () => {
         <h1 className="text-3xl font-bold mb-6 text-slate-700">
           Shop Your Pet
         </h1>
-        <a
-          href="shop"
-          className="bg-teal-500 hover:bg-teal-600 px-3 py-2 rounded"
+        <button
+          onClick={handleReset}
+          className="bg-teal-500 hover:bg-teal-600 px-3 py-2 rounded text-white"
         >
           Show all
-        </a>
+        </button>
       </div>
       <FilterSection
         priceRange={priceRange}
