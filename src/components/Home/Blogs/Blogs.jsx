@@ -1,5 +1,5 @@
 import dog1 from "../../../assets/images/blogDog1.jpg";
-import dog2 from "../../../assets/images/blogDog2.jpg";
+import dog2 from "../../../assets/images/dog3.jpg";
 import cat1 from "../../../assets/images/BlogCat1.jpg";
 import BlogCard from "./BlogCard";
 
