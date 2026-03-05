@@ -101,9 +101,15 @@ const Profile = () => {
                         {user?.last_name || "Lover"}
                       </h2>
                     </div>
-                    <p className="text-slate-500 text-sm mb-4">
-                      Member of PetHaven community
-                    </p>
+                    {user.is_staff ? (
+                      <p className="text-slate-500 text-sm mb-4">
+                        Admin of PetHaven community
+                      </p>
+                    ) : (
+                      <p className="text-slate-500 text-sm mb-4">
+                        Member of PetHaven community
+                      </p>
+                    )}
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 text-slate-600">
                         <HiOutlineMail className="text-teal-500" size={20} />
