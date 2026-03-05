@@ -4,10 +4,10 @@ import useFetchPet from "../../hooks/useFetchPet";
 import FilterSection from "./FilterSection";
 import ShopCard from "./ShopCard";
 import Pagination from "./Pagination";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const ShopPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [priceRange, setPriceRange] = useState(() => {
     const type = searchParams.get("type");
@@ -16,12 +16,17 @@ const ShopPage = () => {
     return { min: 0, max: 20000 };
   });
 
+  const [selectedCategory, setSelectedCategory] = useState(
+    searchParams.get("category") || ""
+  );
+
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
 
   const handleReset = () => {
+    setSearchParams({});
     setSelectedCategory("");
     setSearchQuery("");
     setSortOrder("");

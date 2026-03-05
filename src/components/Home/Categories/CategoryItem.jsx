@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router";
+
 const CategoryItem = ({ category, index }) => {
   const linears = [
     "from-pink-300 to-teal-300",
@@ -5,8 +7,13 @@ const CategoryItem = ({ category, index }) => {
     "from-teal-300 to-blue-300",
     "from-green-300 to-teal-300",
   ];
+
+  const navigate = useNavigate();
   return (
-    <div>
+    <div
+      onClick={() => navigate(`/shop?category=${category.id}`)}
+      className="cursor-pointer"
+    >
       <div
         className={`p-6 bg-linear-to-br ${linears[index % linears.length]} w-45 h-42 rounded-xl flex flex-col items-center justify-center transition-transform hover:scale-105 cursor-pointer shadow-sm`}
       >

@@ -8,6 +8,7 @@ import AddFavoriteButton from "../components/dashboard/Favorite/AddFavoriteButto
 import Reviews from "../components/Reviews/ReviewSection";
 import useAuthContext from "../hooks/useAuthContext";
 import AdoptionPopUp from "../components/dashboard/Adoption/AdoptionPopUp";
+import { TbCurrencyTaka } from "react-icons/tb";
 
 const PetDetails = () => {
   const [showImageId, setShowImageId] = useState(0);
@@ -111,7 +112,14 @@ const PetDetails = () => {
               </h1>
 
               <div className="text-4xl font-bold mb-4 bg-white/20 inline-block px-4 py-1 rounded-lg backdrop-blur-md mt-6">
-                {isFree ? "FREE ADOPTION" : `$${pet.price}`}
+                {isFree ? (
+                  "FREE ADOPTION"
+                ) : (
+                  <span className="flex items-center gap-1">
+                    <TbCurrencyTaka />
+                    {pet.price}
+                  </span>
+                )}
               </div>
 
               <div className="flex">

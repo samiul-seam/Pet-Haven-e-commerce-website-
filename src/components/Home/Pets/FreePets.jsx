@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import PetCard from "./PetCard";
 import useSimpleFetchPets from "../../../hooks/useSimpleFetchPets";
 import { Link } from "react-router";
-
+ 
 const FreePets = () => {
   const { pets, isLoading } = useSimpleFetchPets();
 

@@ -75,13 +75,9 @@ const Profile = () => {
         <div className="absolute -bottom-16 left-4 md:left-12 flex items-end gap-4">
           <div className="avatar">
             <div className="w-32 md:w-40 rounded-full border-4 border-white shadow-xl bg-slate-200">
-              {user?.photoURL ? (
-                <img src={user.photoURL} alt="User Profile" />
-              ) : (
-                <div className="flex items-center justify-center h-full text-slate-400">
-                  <HiOutlineUserCircle size={80} />
-                </div>
-              )}
+              <div className="flex items-center justify-center h-full text-slate-400">
+                <HiOutlineUserCircle size={80} />
+              </div>
             </div>
           </div>
         </div>
@@ -114,17 +110,11 @@ const Profile = () => {
                         <span className="text-sm">{user?.email}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
-                        <FaHome 
-                          className="text-teal-500"
-                          size={20}
-                        />
+                        <FaHome className="text-teal-500" size={20} />
                         <span className="text-sm">{user?.address}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
-                        <FaMobileAlt 
-                          className="text-teal-500"
-                          size={20}
-                        />
+                        <FaMobileAlt className="text-teal-500" size={20} />
                         <span className="text-sm">{user?.phone_number}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
@@ -168,7 +158,9 @@ const Profile = () => {
             <div className="stats shadow-sm border border-slate-100 w-full bg-white">
               <div className="stat">
                 <div className="stat-title text-slate-500">Favorite</div>
-                <div className="stat-value text-teal-600 text-3xl">{favorites.length}</div>
+                <div className="stat-value text-teal-600 text-3xl">
+                  {favorites.length}
+                </div>
                 <div className="stat-desc text-slate-400">Pets</div>
               </div>
 
