@@ -14,7 +14,8 @@ import useFavoriteContext from "../hooks/useFavoriteContext";
 import { FaHome, FaMobileAlt } from "react-icons/fa";
 
 const Profile = () => {
-  const { user, updateUserProfile, changePassword } = useAuthContext();
+  const { user, errorMsg, updateUserProfile, changePassword } =
+    useAuthContext();
   const [isEditing, setIsEditing] = useState(false);
   const [orderCount, setOrderCount] = useState(0);
 
@@ -23,6 +24,7 @@ const Profile = () => {
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -56,21 +58,38 @@ const Profile = () => {
         phone_number: data.phone_number,
       };
       await updateUserProfile(profilePayload);
-      if (data.current_password && data.new_password) {
-        await changePassword({
-          current_password: data.current_password,
-          new_password: data.new_password,
-        });
+
+      if (data.current_password && data.new_password && data.re_new_password) {
+        try {
+          const payload = {
+            current_password: data.current_password,
+            new_password: data.new_password,
+            re_new_password: data.re_new_password,
+          };
+          const res = await changePassword(payload);
+
+          if (res.status === 201 || res.status === 200) {
+            alert("Password changed successfully!");
+            reset();
+            setIsEditing(false);
+            return;
+          }
+        } catch {
+          alert("Password update failed.");
+          return;
+        }
       }
+      alert("Profile updated successfully!");
       setIsEditing(false);
     } catch (error) {
-      console.log(error);
+      console.error(error.response?.data);
+      alert(errorMsg);
     }
   };
 
   return (
     <div className="min-h-screen bg-slate-50 pb-12">
-      {/* Header / Cover Section */}
+      {/* Header */}
       <div className="h-48 md:h-64 bg-linear-to-r from-teal-600 to-cyan-500 relative">
         <div className="absolute -bottom-16 left-4 md:left-12 flex items-end gap-4">
           <div className="avatar">

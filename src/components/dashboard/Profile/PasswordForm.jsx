@@ -73,8 +73,8 @@ const PasswordForm = ({ register, watch, errors }) => {
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Confirm to save"
-                  className={inputClass(errors.confirm_password)}
-                  {...register("confirm_password", {
+                  className={inputClass(errors.re_new_password)}
+                  {...register("re_new_password", {
                     required: "Please confirm your new password",
                     validate: (value) =>
                       value === password || "Passwords do not match",
