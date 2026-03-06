@@ -56,7 +56,6 @@ const Login = () => {
       )}
 
       <div className="max-w-5xl w-full bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200 overflow-hidden flex flex-col md:flex-row min-h-150 text-slate-600">
-        
         {/* Left Side Visual */}
         <div className="relative w-1/2 hidden md:block">
           <img
@@ -66,8 +65,12 @@ const Login = () => {
           />
           <div className="absolute inset-0 bg-linear-to-t from-teal-900/70 to-transparent flex flex-col justify-end p-12">
             <div className="backdrop-blur-md bg-white/10 p-8 rounded-3xl border border-white/20">
-              <h2 className="text-white text-3xl font-bold tracking-tight">Welcome Back.</h2>
-              <p className="text-teal-50/90 mt-2 font-medium">Your account is ready for you.</p>
+              <h2 className="text-white text-3xl font-bold tracking-tight">
+                Welcome Back.
+              </h2>
+              <p className="text-teal-50/90 mt-2 font-medium">
+                Your account is ready for you.
+              </p>
             </div>
           </div>
         </div>
@@ -75,14 +78,18 @@ const Login = () => {
         {/* Right Side Form */}
         <div className="w-full md:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
           <div className="mb-10 text-center md:text-left">
-            <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Sign In</h1>
+            <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">
+              Sign In
+            </h1>
             <p className="text-slate-400 mt-2">Manage your PetHaven account.</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             {/* Email Field */}
             <div className="space-y-1">
-              <label className="text-sm font-bold text-slate-600 ml-1 block">Email Address</label>
+              <label className="text-sm font-bold text-slate-600 ml-1 block">
+                Email Address
+              </label>
               <div className="relative group">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors">
                   <HiOutlineMail size={20} />
@@ -95,14 +102,24 @@ const Login = () => {
                   {...register("email", { required: "Email is required" })}
                 />
               </div>
-              {errors.email && <p className="text-red-500 text-xs font-bold ml-1">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-xs font-bold ml-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             {/* Password Field */}
             <div className="space-y-1">
               <div className="flex justify-between items-center px-1">
-                <label className="text-sm font-bold text-slate-600 block">Password</label>
-                <Link to="/reset-password" size="xs" className="text-xs font-bold text-teal-600 hover:underline">
+                <label className="text-sm font-bold text-slate-600 block">
+                  Password
+                </label>
+                <Link
+                  to="/reset-password"
+                  size="xs"
+                  className="text-xs font-bold text-teal-600 hover:underline"
+                >
                   Forgot?
                 </Link>
               </div>
@@ -115,7 +132,9 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
                   className={`${inputClass(errors.password)} pl-12 pr-12`}
-                  {...register("password", { required: "Password is required" })}
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
                 />
                 <button
                   type="button"
@@ -125,7 +144,11 @@ const Login = () => {
                   {showPassword ? <HiEye size={20} /> : <HiEyeOff size={20} />}
                 </button>
               </div>
-              {errors.password && <p className="text-red-500 text-xs font-bold ml-1">{errors.password.message}</p>}
+              {errors.password && (
+                <p className="text-red-500 text-xs font-bold ml-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             <button
@@ -147,10 +170,27 @@ const Login = () => {
           <div className="mt-8 text-center">
             <p className="text-sm text-slate-500 font-medium">
               Don&apos;t have an account?{" "}
-              <Link to="/register" className="text-teal-600 font-bold hover:underline">
+              <Link
+                to="/register"
+                className="text-teal-600 font-bold hover:underline"
+              >
                 Create Account
               </Link>
             </p>
+            <div className="mt-2">
+              <Link
+                to="/reset-password"
+                className="text-teal-600 font-bold hover:underline"
+              >
+                Forget password {" "}
+              </Link>
+              <Link
+                to="/resend-activation"
+                className="text-teal-600 font-bold hover:underline"
+              >
+                || Resend activation email
+              </Link>
+            </div> 
           </div>
         </div>
       </div>

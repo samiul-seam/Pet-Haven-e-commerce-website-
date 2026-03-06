@@ -57,7 +57,7 @@ const ResetPassword = () => {
         <input
           type="email"
           placeholder="Enter Your Email"
-          className="input input-bordered w-full mt-3"
+          className="input input-bordered w-full mt-3 bg-cyan-100 text-black"
           {...register("email", { required: "Email is required" })}
         />
         {errors.email && (
