@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authApiClient = axios.create({
-  baseURL: "https://pet-haven-kappa.vercel.app/api/",
+  baseURL: "https://pet-haven-kappa.vercel.app/api",
 });
 
 export default authApiClient;
