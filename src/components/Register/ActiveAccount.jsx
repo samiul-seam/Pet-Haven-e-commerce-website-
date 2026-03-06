@@ -10,18 +10,18 @@ const ActiveAccount = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    apiClient
-      .post("/auth/users/activation/", { uid, token })
-      .then(() => {
-        setMessage("Account activate successfully.");
-        setTimeout(() => navigate("/login"), 3000);
-      })
-      .catch((error) => {
-        setError("Something Went Wrong. Please chek you activation link.");
-        console.log(error);
-      });
-  }, []);
+ useEffect(() => {
+  apiClient
+    .post("/auth/users/activation/", { uid, token })
+    .then(() => {
+      setMessage("Account activated successfully.");
+      setTimeout(() => navigate("/login"), 3000);
+    })
+    .catch(() => {
+      setError("Something went wrong. Please check your activation link.");
+    });
+}, [uid, token, navigate]);
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-base-200">
       <div className="card bg-base-100 shadow-xl p-6">
