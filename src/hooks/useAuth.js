@@ -126,8 +126,11 @@ const useAuth = () => {
         message:
           "Registration successfull. Check your email to activate your account.",
       };
-    } catch (error) {
-      setErrorMsg(error, "Registration Failed! Try Again");
+    } catch {
+      return {
+        success: false,
+        message: "Registration failed",
+      };
     } finally {
       setLoading(false);
     }

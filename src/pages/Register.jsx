@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import img from "../assets/images/cat1.jpg";
@@ -10,6 +10,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
+  const [failedMsg, setFailedMas] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -19,14 +20,24 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const password = watch("password");
- 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setSuccessMsg("");
+      setFailedMas("");
+    }, 4000);
+  }, [successMsg, failedMsg]);
+
   const onSubmit = async (data) => {
     setLoading(true);
+    setSuccessMsg("");
     try {
       const response = await registerUser(data);
-      if (response.success) {
+      if (response?.success) {
         setSuccessMsg(response.message);
         setTimeout(() => navigate("/login"), 3000);
+      } else {
+        setFailedMas(response.message);
       }
     } finally {
       setLoading(false);
@@ -46,6 +57,11 @@ const Register = () => {
       {successMsg && (
         <div className="fixed top-6 bg-teal-600 text-white px-6 py-3 rounded-lg shadow-xl z-50 animate-fade-in">
           {successMsg}
+        </div>
+      )}
+      {failedMsg && (
+        <div className="fixed top-6 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl z-50 animate-fade-in">
+          {failedMsg}
         </div>
       )}
 
@@ -109,6 +125,16 @@ const Register = () => {
                 {...register("password", {
                   required: "Password is required",
                   minLength: { value: 6, message: "Min 6 characters" },
+                  validate: {
+                    hasUpper: (value) =>
+                      /[A-Z]/.test(value) ||
+                      "Must include at least one uppercase letter",
+                    hasLower: (value) =>
+                      /[a-z]/.test(value) ||
+                      "Must include at least one lowercase letter",
+                    hasNumber: (value) =>
+                      /\d/.test(value) || "Must include at least one number",
+                  },
                 })}
               />
               {errors.password && (
