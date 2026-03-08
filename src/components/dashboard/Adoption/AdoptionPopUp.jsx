@@ -29,7 +29,7 @@ const AdoptionPopUp = ({ isOpen, onClose, petId }) => {
       const res = await authApiClient.post("/adoptions/", adoptionData);
       if (res.status === 201) {
         setTimeout(() => {
-          alert("Pet addedd to Adoption list. Navigating to Adoption list");
+          alert("Pet added to adoption list. Navigating to adoption list");
           navigate("/dashboard/adoption")
           onClose();
         }, 1000);

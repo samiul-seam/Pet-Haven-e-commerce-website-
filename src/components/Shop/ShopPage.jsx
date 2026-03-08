@@ -17,13 +17,13 @@ const ShopPage = () => {
   });
 
   const [selectedCategory, setSelectedCategory] = useState(
-    searchParams.get("category") || ""
+    searchParams.get("category") || "",
   );
-
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const handleReset = () => {
     setSearchParams({});
@@ -36,14 +36,22 @@ const ShopPage = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory, priceRange, searchQuery, sortOrder]);
+  }, [selectedCategory, priceRange, sortOrder]);
+
+  // search is working before finishing the word ( solved )
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchQuery);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   const { pets, isLoading, error, totalPage } = useFetchPet(
     selectedCategory,
     sortOrder,
     currentPage,
     priceRange,
-    searchQuery,
+    debouncedSearch,
   );
 
   const { categories } = useFetchCategory();
@@ -67,8 +75,8 @@ const ShopPage = () => {
         categories={categories}
         selectedCategory={selectedCategory}
         handleCategoryChange={setSelectedCategory}
-        handleSearchQuery={setSearchQuery}
         searchQuery={searchQuery}
+        handleSearchQuery={setSearchQuery}
         sortOrder={sortOrder}
         handleSorting={setSortOrder}
       />

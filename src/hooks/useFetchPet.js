@@ -6,7 +6,7 @@ const useFetchPet = (
   sortOrder,
   currentPage,
   priceRange,
-  searchQuery,
+  debouncedSearch,
 ) => {
   const [pets, setPets] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,11 +18,11 @@ const useFetchPet = (
       setError(null);
       setIsLoading(true);
    
-      const url = `/pets/?category_id=${categoryId}&price__gt=${priceRange.min - 1}&price__lt=${priceRange.max +1}&search=${searchQuery}&ordering=${sortOrder}&page=${currentPage}`;
+      const url = `/pets/?category_id=${categoryId}&price__gt=${priceRange.min - 1}&price__lt=${priceRange.max +1}&search=${debouncedSearch}&ordering=${sortOrder}&page=${currentPage}`;
 
       try {
         const response = await apiClient.get(url);
-        const data = await response.data;
+        const data = response.data;
         setPets(data.results);
         const pageLimit = 10;
 
@@ -35,7 +35,7 @@ const useFetchPet = (
     };
  
     fetchPets();
-  }, [categoryId, sortOrder, currentPage, priceRange, searchQuery]);
+  }, [categoryId, sortOrder, currentPage, priceRange, debouncedSearch]);
 
   return { pets, isLoading, error, totalPage };
 };
