@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ShoppingCart, ShieldCheck, Truck } from "lucide-react";
 import ImageCarousel from "../components/ProfileDetails/ImageCarousel";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import apiClient from "../services/api-client";
 import defaultImage from "../assets/images/default.jpg";
 import AddFavoriteButton from "../components/dashboard/Favorite/AddFavoriteButton";
@@ -17,6 +17,8 @@ const PetDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useAuthContext();
+
+  const navigate = useNavigate();
 
   const { petId } = useParams();
   // console.log("This is form PetId params",petId);
@@ -138,6 +140,7 @@ const PetDetails = () => {
             </div>
 
             {/* Action Buttons */}
+
             {pet.is_adopted ? (
               <div className="bg-teal-700/20 p-4 rounded-xl border border-teal-400/30 text-center">
                 <h1 className="text-xl font-bold text-white">
@@ -151,7 +154,13 @@ const PetDetails = () => {
               <div className="space-y-4">
                 <div className="flex gap-4">
                   <button
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => {
+                      if (!user) {
+                        navigate("/login");
+                      } else {
+                        setIsOpen(true);
+                      }
+                    }}
                     className="btn btn-lg flex-1 bg-white border-none text-teal-600 hover:bg-cyan-50 shadow-xl transition-all active:scale-95"
                   >
                     <ShoppingCart size={22} />
@@ -164,7 +173,7 @@ const PetDetails = () => {
                     petId={petId}
                   />
 
-                  <AddFavoriteButton petId={petId} />
+                  {<AddFavoriteButton petId={petId} user={user} />}
                 </div>
               </div>
             )}

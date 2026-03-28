@@ -1,7 +1,8 @@
 import { FaRegHeart, FaHeart } from "react-icons/fa6";
 import useFavoriteContext from "../../../hooks/useFavoriteContext";
+import { useNavigate } from "react-router";
 
-const AddFavoriteButton = ({ petId }) => {
+const AddFavoriteButton = ({ petId, user }) => {
   const {
     getFavoriteId,
     isFavorited,
@@ -9,17 +10,22 @@ const AddFavoriteButton = ({ petId }) => {
     removeFavorite,
     actionLoading,
   } = useFavoriteContext();
-  
+
   const favorited = isFavorited(Number(petId));
   const favoriteId = getFavoriteId(Number(petId));
 
+  const navigate = useNavigate();
   // console.log(favorited);
   // console.log(favoriteId);
   // console.log("Button",petId);
 
   const handleClick = () => {
-    if (favorited) removeFavorite(favoriteId);
-    else addFavorite(petId);
+    if (!user) {
+      navigate("/login");
+    } else {
+      if (favorited) removeFavorite(favoriteId);
+      else addFavorite(petId);
+    }
   };
 
   return (
