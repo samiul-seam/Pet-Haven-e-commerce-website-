@@ -16,7 +16,7 @@ const CarouselSlide = ({ title, subtitle, image }) => {
 
         <p className="text-lg md:text-xl mb-6 opacity-90">{subtitle}</p>
 
-        <button className="btn bg-teal-500 border-teal-800 rounded-full px-8">
+        <button className="btn bg-orange-500 border-yellow-800 rounded-full px-8">
           Browse Pets
         </button>
       </div>

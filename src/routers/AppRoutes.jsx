@@ -24,6 +24,8 @@ import Categories from "../pages/Categories";
 import AddCategoryForm from "../pages/AddCategoryForm";
 import UpdateCategory from "../components/dashboard/Categories/UpdateCategory";
 import Users from "../pages/Users";
+import Pets from "../components/Pets/Pets";
+import Services from "../pages/Services";
 
 const AppRoutes = () => {
   return (
@@ -31,7 +33,9 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="pets" element={<Pets />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="services" element={<Services />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="activate/:uid/:token" element={<ActiveAccount />} />
@@ -49,7 +53,7 @@ const AppRoutes = () => {
           <PrivateRoute>
             <DashboardLayout />
           </PrivateRoute>
-        }
+        } 
       >
         <Route index element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />

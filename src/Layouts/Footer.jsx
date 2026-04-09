@@ -8,9 +8,11 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             {/* Brand Column */}
             <div className="space-y-6">
-              <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white">
+
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white">
                 <Dog size={28} />
               </div>
+
               <p className="text-sm leading-relaxed max-w-xs">
                 Your trusted partner in finding the perfect pet companion. We
                 connect loving families with pets in need of forever homes.
@@ -20,7 +22,7 @@ const Footer = () => {
                   <a
                     key={i}
                     href="#"
-                    className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-teal-500 hover:text-white transition-all"
+                    className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all"
                   >
                     <Icon size={18} />
                   </a>
@@ -33,27 +35,27 @@ const Footer = () => {
               <h4 className="text-white font-bold mb-6 text-lg">Quick Links</h4>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Free Pets
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Premium Pets
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Blog
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Success Stories
                   </a>
                 </li>
@@ -65,27 +67,27 @@ const Footer = () => {
               <h4 className="text-white font-bold mb-6 text-lg">Support</h4>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Help Center
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Adoption Process
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Pet Care Guide
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     FAQs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-teal-400 transition-colors">
+                  <a href="#" className="hover:text-orange-400 transition-colors">
                     Contact Us
                   </a>
                 </li>
@@ -102,9 +104,9 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="input input-bordered bg-slate-800 border-slate-700 focus:border-teal-500 w-full text-white"
+                  className="input input-bordered bg-slate-800 border-slate-700 focus:border-orange-500 w-full text-white"
                 />
-                <button className="btn bg-teal-500 hover:bg-teal-600 border-none text-white px-8">
+                <button className="btn bg-orange-500 hover:bg-orange-600 border-none text-white px-8">
                   Subscribe
                 </button>
               </div>

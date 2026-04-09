@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const PasswordForm = ({ register, watch, errors }) => {
   const inputClass = (errors) =>
     `input input-bordered w-full bg-slate-200 focus:bg-white border-slate-300 text-slate-600 ${
-      errors ? "input-error" : "focus:border-teal-500"
+      errors ? "input-error" : "focus:border-orange-500"
     }`;
 
   const [isPasswordSection, setIsPasswordSection] = useState(false);
@@ -18,15 +18,15 @@ const PasswordForm = ({ register, watch, errors }) => {
       <div className="mt-8 pt-6 border-t-2 border-teal-50 animate-in fade-in slide-in-from-top-2 duration-500 mb-4">
         <button
           type="button"
-          className="btn btn-link p-0 justify-start text-primary font-semibold h-auto min-h-0 mb-4"
+          className="text-sm underline text-slate-600 hover:text-yellow-500 cursor-pointer mb-2"
           onClick={() => setIsPasswordSection(!isPasswordSection)}
         >
-          {isPasswordSection ? "Close Password Section" : "Change Password"}
+          {isPasswordSection ? "Close Password Section" : "Change Password?"}
         </button>
 
         {isPasswordSection && (
           <div>
-            <h4 className="text-sm font-black text-teal-600 uppercase tracking-widest mb-4">
+            <h4 className="text-sm font-black text-yellow-600 uppercase tracking-widest mb-4">
               Security Update
             </h4>
             <div className="form-control">
@@ -82,7 +82,7 @@ const PasswordForm = ({ register, watch, errors }) => {
                 />
               </div>
 
-              <div className="text-teal-600 flex items-center gap-2">
+              <div className="text-slate-600 flex items-center gap-2">
                 <span className="text-slate-500">Show Password </span>
 
                 <button
@@ -95,7 +95,7 @@ const PasswordForm = ({ register, watch, errors }) => {
               <Link
                 to="/reset-password"
                 name="Forget password?"
-                className="text-xs font-bold text-teal-600 hover:text-teal-700 hover:underline"
+                className="text-xs font-bold text-orange-500 hover:text-orange-700 hover:underline"
               >
                 Forget Password?
               </Link>

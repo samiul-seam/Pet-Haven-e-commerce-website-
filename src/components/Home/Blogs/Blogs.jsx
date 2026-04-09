@@ -2,6 +2,8 @@ import dog1 from "../../../assets/images/blogDog1.jpg";
 import dog2 from "../../../assets/images/dog3.jpg";
 import cat1 from "../../../assets/images/BlogCat1.jpg";
 import BlogCard from "./BlogCard";
+import titleIcon from "../../../assets/images/title-icon.png";
+
 
 const Blog = () => {
   const posts = [
@@ -43,7 +45,8 @@ const Blog = () => {
   return (
     <section id="blog-section" className="py-16 px-4 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 flex flex-col justify-between items-center">
+        <img src={titleIcon} alt="icon Image" />
         <h2 className="text-3xl font-bold text-slate-900 mb-2">
           Pet Care Blog
         </h2>
@@ -57,18 +60,11 @@ const Blog = () => {
             key={index}
             className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 flex flex-col"
           >
-            {/* Image Container */}
             <BlogCard post={post} />
           </div>
         ))}
       </div>
 
-      {/* CTA Button
-      <div className="text-center">
-        <button className="bg-teal-600 text-white font-bold py-3 px-10 rounded-full hover:bg-teal-700 transition-shadow shadow-md hover:shadow-lg">
-          View All Articles
-        </button>
-      </div> */}
     </section>
   );
 };

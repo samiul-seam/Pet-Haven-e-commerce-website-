@@ -7,7 +7,7 @@ const CategoryList = ({ category }) => {
   const handleudpateCategory = () => {
     navigate(`/dashboard/categories/update/${category.id}`);
   };
-
+ 
   return (
     <>
       <tbody className="text-slate-500 text-sm bg-slate-200 hover:bg-slate-300 ">

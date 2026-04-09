@@ -2,19 +2,23 @@ import Categories from "../components/Home/Categories/Categories";
 import Blog from "../components/Home/Blogs/Blogs";
 import Carousel from "../components/Home/Carousel/Carousel";
 import Discount from "../components/Home/Discount/Discount";
-import FreePets from "../components/Home/Pets/FreePets";
-import PaidPet from "../components/Home/Pets/PaidPets";
-import WhyChooseUs from "../components/Home/WhyChooseUs/WhyChooseUs";
-import CTASection from "../components/Home/WhyChooseUs/CTASection";
+import WhyChooseUs from "../components/Home/Services/WhyChooseUs";
+import CTASection from "../components/Home/Services/CTASection";
+import Welcome from "../components/Home/welcome/welcome";
+import ShortServiceInfo from "../components/Home/Welcome/ShortServiceInfo";
+import OurServices from "../components/Home/Services/OurServices";
+import PetGallary from "../components/Pets/PetGallary";
 
 const Home = () => {
   return (
-    <div className="bg-cyan-100">
+    <div className="bg-white">
       <Carousel />
-      <Categories />
+      <Welcome />
+      <ShortServiceInfo />
       <Discount />
-      <FreePets />
-      <PaidPet />
+      <OurServices />
+      <Categories />
+      <PetGallary />
       <Blog />
       <WhyChooseUs />
       <CTASection />

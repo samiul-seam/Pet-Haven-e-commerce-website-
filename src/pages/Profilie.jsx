@@ -12,12 +12,14 @@ import PasswordForm from "../components/dashboard/Profile/PasswordForm";
 import authApiClient from "../services/auth-api-client";
 import useFavoriteContext from "../hooks/useFavoriteContext";
 import { FaHome, FaMobileAlt } from "react-icons/fa";
+import bgImg from "../assets/images/welcome.jpg";
 
 const Profile = () => {
   const { user, errorMsg, updateUserProfile, changePassword } =
     useAuthContext();
   const [isEditing, setIsEditing] = useState(false);
   const [orderCount, setOrderCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -35,18 +37,21 @@ const Profile = () => {
   }, [user, setValue]);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchAdopt = async () => {
       try {
         const res = await authApiClient.get("adoptions/");
         setOrderCount(res.data.length);
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchAdopt();
   }, []);
 
-  const { favorites } = useFavoriteContext();
+  const { favorites, loading } = useFavoriteContext();
 
   const onSubmit = async (data) => {
     try {
@@ -90,7 +95,12 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-slate-50 pb-12">
       {/* Header */}
-      <div className="h-48 md:h-64 bg-linear-to-r from-teal-600 to-cyan-500 relative">
+      <div className="h-48 md:h-64 relative">
+        <img
+          src={bgImg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
         <div className="absolute -bottom-16 left-4 md:left-12 flex items-end gap-4">
           <div className="avatar">
             <div className="w-32 md:w-40 rounded-full border-4 border-white shadow-xl bg-slate-200">
@@ -131,23 +141,23 @@ const Profile = () => {
                     )}
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 text-slate-600">
-                        <HiOutlineMail className="text-teal-500" size={20} />
+                        <HiOutlineMail className="text-orange-500" size={20} />
                         <span className="text-sm">{user?.email}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
-                        <FaHome className="text-teal-500" size={20} />
+                        <FaHome className="text-yellow-500" size={20} />
                         <span className="text-sm">{user?.address}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
-                        <FaMobileAlt className="text-teal-500" size={20} />
+                        <FaMobileAlt className="text-orange-500" size={20} />
                         <span className="text-sm">{user?.phone_number}</span>
                       </div>
                       <div className="flex items-center gap-3 text-slate-600">
                         <HiOutlineBadgeCheck
-                          className="text-teal-500"
+                          className="text-yellow-500"
                           size={20}
                         />
-                        <span className="badge badge-success badge-outline w-50">
+                        <span className="badge badge-warning badge-outline w-50">
                           Verified Owner
                         </span>
                       </div>
@@ -183,16 +193,24 @@ const Profile = () => {
             <div className="stats shadow-sm border border-slate-100 w-full bg-white">
               <div className="stat">
                 <div className="stat-title text-slate-500">Favorite</div>
-                <div className="stat-value text-teal-600 text-3xl">
-                  {favorites.length}
+                <div className="stat-value text-yellow-600 text-3xl">
+                  {loading ? (
+                    <div className="loading loading-spinner"> </div>
+                  ) : (
+                    favorites.length
+                  )}
                 </div>
                 <div className="stat-desc text-slate-400">Pets</div>
               </div>
 
               <div className="stat">
                 <div className="stat-title text-slate-500">Adopted</div>
-                <div className="stat-value text-cyan-600 text-3xl">
-                  {orderCount}
+                <div className="stat-value text-orange-600 text-3xl">
+                  {isLoading ? (
+                    <div className="loading loading-spinner"> </div>
+                  ) : (
+                    orderCount
+                  )}
                 </div>
                 <div className="stat-desc text-slate-400">Pets</div>
               </div>

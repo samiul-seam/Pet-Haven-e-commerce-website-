@@ -12,17 +12,17 @@ const FavoriteSection = () => {
         {/* Header Section */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2 text-teal-600">
+            <h1 className="text-3xl font-bold flex items-center gap-2 text-orange-600">
               <HiHeart className="text-red-500" /> My Favorites
             </h1>
             <p className="text-slate-500">
               Manage the pets you&apos;ve fallen in love with.
             </p>
           </div>
-          <div className="stats shadow bg-teal-700/70 shadow-slate-600 hidden sm:inline-flex">
+          <div className="stats shadow bg-white shadow-slate-600 hidden sm:inline-flex">
             <div className="stat py-2 px-4">
-              <div className="stat-title">Total Saved</div>
-              <div className="stat-value text-2xl text-primary">
+              <div className="stat-title text-gray-600">Total Saved</div>
+              <div className="stat-value text-2xl text-orange-700">
                 {favorites.length}
               </div>
             </div>

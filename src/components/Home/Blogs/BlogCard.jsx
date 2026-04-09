@@ -9,7 +9,7 @@ const BlogCard = ({ post }) => {
           alt={post.title}
           className="w-full h-full object-cover"
         />
-        <span className="absolute top-4 left-4 bg-teal-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+        <span className="absolute top-4 left-4 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full">
           {post.category}
         </span>
       </div>
@@ -34,7 +34,7 @@ const BlogCard = ({ post }) => {
             <a
               href={post.link}
               target="_blank"
-              className="cursor-pointer text-teal-600 font-bold text-sm flex items-center hover:text-teal-700 transition-colors"
+              className="cursor-pointer text-orange-600 font-bold text-sm flex items-center hover:text-orange-700 transition-colors"
             >
               Read more <ArrowRight size={16} className="ml-1" />
             </a>

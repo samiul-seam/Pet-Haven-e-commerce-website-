@@ -44,7 +44,7 @@ const Login = () => {
     `w-full px-4 py-3 rounded-xl border-2 transition-all outline-none ${
       error
         ? "border-red-400 focus:border-red-500"
-        : "border-slate-300 focus:border-teal-500"
+        : "border-slate-300 focus:border-orange-500"
     }`;
 
   return (
@@ -68,7 +68,7 @@ const Login = () => {
               <h2 className="text-white text-3xl font-bold tracking-tight">
                 Welcome Back.
               </h2>
-              <p className="text-teal-50/90 mt-2 font-medium">
+              <p className="text-orange-50/90 mt-2 font-medium">
                 Your account is ready for you.
               </p>
             </div>
@@ -91,7 +91,7 @@ const Login = () => {
                 Email Address
               </label>
               <div className="relative group">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors">
                   <HiOutlineMail size={20} />
                 </span>
                 <input
@@ -103,7 +103,7 @@ const Login = () => {
                 />
               </div>
               {errors.email && (
-                <p className="text-red-500 text-xs font-bold ml-1">
+                <p className="text-red-600 text-xs font-bold ml-1">
                   {errors.email.message}
                 </p>
               )}
@@ -118,13 +118,13 @@ const Login = () => {
                 <Link
                   to="/reset-password"
                   size="xs"
-                  className="text-xs font-bold text-teal-600 hover:underline"
+                  className="text-xs font-bold text-orange-600 hover:underline"
                 >
                   Forgot?
                 </Link>
               </div>
               <div className="relative group">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-teal-500 transition-colors">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-500 transition-colors">
                   <HiOutlineLockClosed size={20} />
                 </span>
                 <input
@@ -139,7 +139,7 @@ const Login = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-teal-500 transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-500 transition-colors"
                 >
                   {showPassword ? <HiEye size={20} /> : <HiEyeOff size={20} />}
                 </button>
@@ -154,7 +154,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-teal-100 transition-all active:scale-[0.98] disabled:bg-slate-300 flex items-center justify-center gap-2 mt-4"
+              className="w-full bg-orange-500 hover:bg-white text-white hover:text-gray-700 border-2 border-orange-500 font-bold py-4 rounded-xl shadow-lg shadow-orange-100 transition-all active:scale-[0.98] disabled:bg-slate-300 flex items-center justify-center gap-2 mt-4"
             >
               {loading ? (
                 <>
@@ -172,7 +172,7 @@ const Login = () => {
               Don&apos;t have an account?{" "}
               <Link
                 to="/register"
-                className="text-teal-600 font-bold hover:underline"
+                className="text-orange-400 font-bold hover:underline"
               >
                 Create Account
               </Link>
@@ -180,13 +180,13 @@ const Login = () => {
             <div className="mt-2">
               <Link
                 to="/reset-password"
-                className="text-teal-600 font-bold hover:underline"
+                className="text-orange-400 font-bold hover:underline"
               >
                 Forget password {" "}
               </Link>
               <Link
                 to="/resend-activation"
-                className="text-teal-600 font-bold hover:underline"
+                className="text-orange-400 font-bold hover:underline"
               >
                 || Resend activation email
               </Link>

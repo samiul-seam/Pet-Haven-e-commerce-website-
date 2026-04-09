@@ -48,7 +48,7 @@ const Register = () => {
     `w-full px-4 py-3 rounded-xl border-2 transition-all outline-none bg-white ${
       error
         ? "border-red-400 focus:border-red-500"
-        : "border-slate-300 focus:border-teal-500"
+        : "border-slate-300 focus:border-orange-500"
     }`;
 
   return (
@@ -170,7 +170,7 @@ const Register = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-teal-600 mx-1"
+                className="text-yellow-600 mx-1"
               >
                 {showPassword ? <HiEye size={20} /> : <HiEyeOff size={20} />}
               </button>
@@ -179,7 +179,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-teal-200 transition-all active:scale-[0.98] disabled:opacity-70"
+              className="w-full bg-orange-500 hover:bg-white text-white hover:text-gray-700 border-2 border-orange-500 font-bold py-3.5 rounded-xl shadow-lg shadow-gray-300 transition-all active:scale-[0.98] disabled:opacity-70"
             >
               {loading ? "Please wait..." : "Register Now"}
             </button>
@@ -189,7 +189,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-teal-600 font-bold hover:underline"
+              className="text-orange-400 font-bold hover:underline"
             >
               Sign In
             </Link>

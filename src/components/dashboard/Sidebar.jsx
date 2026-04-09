@@ -52,11 +52,11 @@ const Sidebar = () => {
         className="drawer-overlay"
       ></label>
 
-      <aside className="w-72 min-h-full bg-teal-700/90 p-6 text-white border-r-4 border-emerald-400">
+      <aside className="w-72 min-h-full bg-white p-6 text-gray-600 border-r-4 border-orange-400">
         {/* Sidebar Header */}
         <div className="flex items-center gap-3 mb-10 px-2">
-          <div className="bg-emerald-400 p-2 rounded-lg">
-            <FiShoppingCart className="h-6 w-6 text-[#0d7a71]" />
+          <div>
+            <FiShoppingCart className="h-6 w-6 text-yellow-600" />
           </div>
           <Link to={"/"} className="text-2xl font-black tracking-tighter ">
             PETHAVEN
@@ -64,7 +64,7 @@ const Sidebar = () => {
         </div>
 
         {/* Sidebar Menu */}
-        <ul className="space-y-2">
+        <ul className="space-y-2 ">
           {menuItems.map((item, index) => (
             <li key={index}>
               <NavLink
@@ -72,9 +72,7 @@ const Sidebar = () => {
                 end
                 className={({ isActive }) =>
                   `flex items-center gap-4 px-4 py-3 rounded-xl font-bold transition-all duration-200 ${
-                    isActive
-                      ? "bg-emerald-400 text-teal-600 "
-                      : "hover:bg-white/10 text-cyan-50"
+                    isActive ? " text-orange-600" : "text-gray-500"
                   }`
                 }
               >
@@ -88,7 +86,7 @@ const Sidebar = () => {
         {/* Sidebar Footer */}
         <div className="mt-auto pt-8 border-t-2 border-white/10">
           <button
-            className="flex items-center gap-4 w-full px-4 py-3 text-red-300 font-bold hover:bg-red-500 hover:text-white rounded-xl transition-all"
+            className="flex items-center gap-4 w-full px-4 py-3 text-red-600 font-bold hover:bg-red-500 hover:text-white rounded-xl transition-all"
             onClick={() => logOutUser()}
           >
             <FiLogOut className="h-5 w-5" />

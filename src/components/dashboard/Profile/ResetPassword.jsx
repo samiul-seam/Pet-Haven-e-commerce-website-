@@ -1,10 +1,11 @@
 import { useState } from "react";
 import apiClient from "../../../services/api-client";
 import { useForm } from "react-hook-form";
+import bgImg from "../../../assets/images/pattern-1.png";
 
 const ResetPassword = () => {
-  const [message, setMessage] = useState();
-  const [loading, setLoading] = useState();
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false); // Initialized to false
 
   const {
     register,
@@ -17,20 +18,36 @@ const ResetPassword = () => {
     setMessage("");
     try {
       await apiClient.post("/auth/users/reset_password/", data);
-      setMessage("Activation email sent successfully.");
-      console.log(data);
+      setMessage("Success! Please check your email for the reset link.");
     } catch (error) {
-      setMessage("Failed to send activation email.");
-      console.log(error);
+      // Check if it's a 404 or 400 to provide better feedback
+      const errorMsg =
+        error.response?.status === 404
+          ? "User with this email not found."
+          : "Failed to send reset email. Please try again later.";
+      setMessage(errorMsg);
     } finally {
       setLoading(false);
     }
   };
-  
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-emerald-200">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img
+          src={bgImg}
+          alt="background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
+
+      {/* Success/Error Alert */}
       {message && (
-        <div role="alert" className="alert alert-success w-1/2">
+        <div
+          role="alert"
+          className={`alert ${message.includes("Success") ? "alert-success" : "alert-error"} w-11/12 max-w-md z-20 mb-4 transition-all`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 shrink-0 stroke-current"
@@ -47,24 +64,47 @@ const ResetPassword = () => {
           <span>{message}</span>
         </div>
       )}
+
+      {/* Reset Form */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="p-6 shadow-md rounded-lg w-96 space-y-4 bg-teal-600"
+        className="p-8 shadow-2xl rounded-2xl w-full max-w-sm bg-white/10 backdrop-blur-md border border-white/20 relative z-10 space-y-6"
       >
-        <label className="text-xl font-semibold text-center">
-          Reset Your password
-        </label>
-        <input
-          type="email"
-          placeholder="Enter Your Email"
-          className="input input-bordered w-full mt-3 bg-cyan-100 text-black"
-          {...register("email", { required: "Email is required" })}
-        />
-        {errors.email && (
-          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-        )}
-        <button className="btn bg-teal-500 w-full" disabled={loading}>
-          {loading ? "Sending Email..." : "Reset Password"}
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white">Reset Your Password</h2>
+          <p className="text-gray-300 text-sm mt-2">
+            Enter your email and we'll send you a link to get back into your
+            account.
+          </p>
+        </div>
+
+        <div className="form-control">
+          <input
+            type="email"
+            placeholder="name@company.com"
+            className={`input w-full bg-white text-black ${errors.email ? "border-red-500" : ""}`}
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Please enter a valid email address",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-400 text-xs mt-2">{errors.email.message}</p>
+          )}
+        </div>
+
+        <button
+          className="btn border-none bg-gray-500 hover:bg-gray-600 text-white w-full"
+          disabled={loading}
+        >
+          {loading ? (
+            <span className="loading loading-spinner loading-sm"></span>
+          ) : (
+            "Send Reset Link"
+          )}
         </button>
       </form>
     </div>

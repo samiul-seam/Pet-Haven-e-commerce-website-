@@ -33,7 +33,7 @@ const AddFavoriteButton = ({ petId, user }) => {
       onClick={handleClick}
       disabled={actionLoading}
       className={
-        "btn btn-lg btn-square transition-all bg-teal-700/30 border-teal-400/50 text-white hover:bg-teal-700"
+        "btn btn-lg btn-square transition-all bg-orange-500 border-orange-400/50 text-white hover:bg-orange-800/30"
       }
     >
       {actionLoading ? (
