@@ -1,7 +1,7 @@
 import { FaRegCircleDot } from "react-icons/fa6";
 import welcomeImg from "../../../assets/images/welcome.jpg";
 import { motion } from "framer-motion";
-
+ 
 const Welcome = () => {
   return (
     <div className="container mx-auto px-20 mt-8">

@@ -4,10 +4,10 @@ import Carousel from "../components/Home/Carousel/Carousel";
 import Discount from "../components/Home/Discount/Discount";
 import WhyChooseUs from "../components/Home/Services/WhyChooseUs";
 import CTASection from "../components/Home/Services/CTASection";
-import Welcome from "../components/Home/welcome/welcome";
 import ShortServiceInfo from "../components/Home/Welcome/ShortServiceInfo";
 import OurServices from "../components/Home/Services/OurServices";
 import PetGallary from "../components/Pets/PetGallary";
+import Welcome from "../components/Home/Welcome/Welcome";
 
 const Home = () => {
   return (
