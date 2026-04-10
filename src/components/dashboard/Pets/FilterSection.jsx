@@ -13,7 +13,7 @@ const FilterSection = ({
           Category
         </label>
         <select
-          className="w-full p-2.5 bg-gray-50 border border-cyan-300 rounded-lg text-gray-700 focus:ring-2 focus:ring-teal-500 outline-none transition-all"
+          className="w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg text-gray-700 focus:ring-2 focus:ring-orange-300 outline-none transition-all"
           value={selectedCategory}
           onChange={(e) => handleCategoryChange(e.target.value)}
         >
@@ -36,7 +36,7 @@ const FilterSection = ({
           value={searchQuery}
           onChange={(e) => handleSearchQuery(e.target.value)}
           placeholder="Search pets..."
-          className="w-full p-2.5 text-black bg-gray-50 border border-cyan-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none transition-all"
+          className="w-full p-2.5 text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none transition-all"
         />
       </div>
     </div>

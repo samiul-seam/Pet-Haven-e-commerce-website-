@@ -43,7 +43,7 @@ const Blog = () => {
   ];
 
   return (
-    <section id="blog-section" className="py-16 px-4 max-w-7xl mx-auto">
+    <section id="blog-section" className="mt-14 px-4 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-12 flex flex-col justify-between items-center">
         <img src={titleIcon} alt="icon Image" />

@@ -50,7 +50,7 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="container mx-auto relative">
+    <div className="container mx-auto relative mt-12">
       <img
         src={bgImg}
         alt=""

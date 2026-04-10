@@ -42,7 +42,7 @@ const Users = () => {
 
       <div className="overflow-x-auto">
         <table className="table w-full ">
-          <thead className="text-white bg-teal-600">
+          <thead className="text-white bg-orange-600">
             <tr>
               <th>ID</th>
               <th>Email</th>

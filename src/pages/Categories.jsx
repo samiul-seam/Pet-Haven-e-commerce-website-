@@ -11,9 +11,9 @@ const Categories = () => {
       <div className="p-6 border border-slate-50">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-semibold mb-4 text-slate-500">
-            All pets
+            All Categories
           </h3>
-          <button className="text-teal-600 hover:underline cursor-pointer hover:text-teal-500">
+          <button className="text-orange-600 hover:underline cursor-pointer hover:text-orange-500">
             <Link to={"/dashboard/categories/add"}>Add Category</Link>
           </button>
         </div>

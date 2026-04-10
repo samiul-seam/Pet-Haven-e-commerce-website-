@@ -28,13 +28,13 @@ const PetSection = () => {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="bg-slate-200 rounded-xl border border-slate-300 shadow-md shadow-slate-300 overflow-hidden">
+    <div className="bg-slate-200 rounded-xl shadow-md  overflow-hidden">
       <div className="p-6 border border-slate-50">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-semibold mb-4 text-slate-500">
             All pets
           </h3>
-          <button className="text-teal-600 hover:underline cursor-pointer hover:text-teal-500">
+          <button className="text-orange-600 hover:underline cursor-pointer hover:orange-teal-500">
             <Link to={"/dashboard/pets/add"}>Add Pets</Link>
           </button>
         </div>
@@ -45,7 +45,7 @@ const PetSection = () => {
           handleSearchQuery={setSearchQuery}
           searchQuery={searchQuery}
         />
-        <div className="overflow-x-auto shadow-md shadow-slate-600">
+        <div className="overflow-x-auto shadow-md shadow-slate-300">
           <table className="table w-full ">
             <thead className="bg-slate-300  text-slate-500 uppercase text-sm">
               <tr>

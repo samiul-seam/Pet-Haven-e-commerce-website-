@@ -25,7 +25,7 @@ const ShopCard = ({ pet }) => {
 
           <div className="card-body">
             <h2 className="text-center text-gray-600 text-2xl font-semibold">{pet.name}</h2>
-            <p className="card-title text-gray-400 justify-between line-clamp-1">
+            <p className="card-title text-gray-400 justify-between line-clamp-2">
               {pet.description}..
             </p>
             <div className="card-actions justify-between items-center mt-3">

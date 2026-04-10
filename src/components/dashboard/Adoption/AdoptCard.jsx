@@ -58,10 +58,10 @@ const AdoptCard = ({ adopt, user, onCancel }) => {
 
   const statusColor = {
     "Not Paid": "bg-red-500",
-    Paid: "bg-green-500",
+    "Paid": "bg-green-500",
     "Ready To Adopt": "bg-blue-500",
-    Adopted: "bg-teal-600",
-    Canceled: "bg-gray-500",
+    "Adopted": "bg-teal-600",
+    "Canceled": "bg-gray-500",
   };
 
   return (
@@ -135,7 +135,7 @@ const AdoptCard = ({ adopt, user, onCancel }) => {
         <div className="flex gap-4">
           <button
             onClick={handlePayment}
-            className="btn flex-1 bg-teal-800 hover:bg-teal-900 text-white"
+            className="btn flex-1 bg-orange-400 hover:shadow-none text-white"
           >
             Buy Now
           </button>

@@ -63,7 +63,7 @@ const AddPetForm = () => {
   };
 
   const inputClass = (error) => {
-    return `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-info"}`;
+    return `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-warning"}`;
   };
 
   return (
@@ -185,7 +185,7 @@ const AddPetForm = () => {
               Description
             </label>
             <textarea
-              className={`textarea bg-slate-100 text-black textarea-bordered h-24 ${errors.description ? "textarea-error" : "textarea-info"}`}
+              className={`textarea bg-slate-100 text-black textarea-bordered h-24 ${errors.description ? "textarea-error" : "textarea-warning"}`}
               {...register("description", {
                 required: "Description is required",
               })}
@@ -200,7 +200,7 @@ const AddPetForm = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn btn-primary w-full mt-4"
+            className="btn bg-orange-500 hover:shadow-none w-full mt-4"
           >
             {isSubmitting ? "Registering..." : "Add Pet"}
           </button>
@@ -232,7 +232,7 @@ const AddPetForm = () => {
 
           <button
             onClick={handleUpload}
-            className="btn bg-teal-800 w-full mt-2"
+            className="btn bg-orange-400 hover:shadow-none w-full mt-2"
             disabled={loading}
           >
             {loading ? "Uploading images..." : "Upload Images"}

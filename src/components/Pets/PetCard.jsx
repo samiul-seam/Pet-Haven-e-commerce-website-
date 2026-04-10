@@ -24,6 +24,7 @@ const PetCard = ({ pet }) => {
       <div className="p-4">
         <h2 className="text-lg text-yellow-500 font-bold">{pet.name}</h2>
         <p className="text-sm text-gray-500">{pet.breed}</p>
+        <span className="text-gray-400 line-clamp-2 mt-2">{pet.description}</span>
 
         <div className="mt-3 flex justify-between items-center">
           <span className="text-orange-600 font-semibold">{pet.age} yrs</span>

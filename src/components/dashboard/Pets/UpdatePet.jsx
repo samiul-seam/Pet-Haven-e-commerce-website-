@@ -112,7 +112,7 @@ const UpdatePetSection = () => {
   if (!pet) return <div>Loading...</div>;
 
   const inputClass = (error) =>
-    `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-info"}`;
+    `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-warning"}`;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
@@ -121,10 +121,10 @@ const UpdatePetSection = () => {
         className="space-y-4 bg-slate-300/40 p-6 rounded-xl shadow-sm shadow-slate-400"
       >
         <div className="flex justify-between items-center text-xl font-bold text-slate-700 mb-4">
-          <h2>Update Pet Info</h2>
+          <h2 className="text-2xl text-gray-600">Update Pet Info</h2>
           <Link
             to={"/dashboard/pets"}
-            className="text-xs text-teal-600 hover:underline hover:text-teal-600/80"
+            className="text-xs text-gray-600 hover:underline hover:text-yellow-600/80"
           >
             Return to Pets page{" "}
           </Link>
@@ -179,7 +179,7 @@ const UpdatePetSection = () => {
             Description
           </label>
           <textarea
-            className={`textarea bg-slate-100 ${errors.description ? "input-error" : "input-info"} text-black h-24`}
+            className={`textarea bg-slate-100 ${errors.description ? "input-error" : "input-warning"} text-black h-24`}
             {...register("description")}
           />
         </div>
@@ -187,7 +187,7 @@ const UpdatePetSection = () => {
         <button
           type="submit"
           disabled={loading}
-          className="btn bg-teal-800 w-full"
+          className="btn bg-orange-400 hover:shadow-none w-full"
         >
           {loading ? "Saving..." : "Update Details"}
         </button>
@@ -249,7 +249,7 @@ const UpdatePetSection = () => {
           <button
             onClick={handleNewImageUpload}
             disabled={loading || newImages.length === 0}
-            className="btn bg-teal-800 text-white w-full mt-4"
+            className="btn bg-orange-400 shadow-md shadow-gray-400 hover:shadow-none text-white w-full mt-4"
           >
             {loading ? "Uploading..." : "Upload New Images"}
           </button>

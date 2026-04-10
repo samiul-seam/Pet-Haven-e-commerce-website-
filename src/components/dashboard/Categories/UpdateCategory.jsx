@@ -72,7 +72,7 @@ const UpdateCategory = () => {
     <div>
         <div className="flex justify-between items-center mb-4">
             <h2 className="text-slate-600 font-bold text-2xl">Edit Category</h2>
-            <Link to="/dashboard/categories/" className="text-teal-700 hover:underline hover:text-teal-600 text-xs">Return to Category list</Link>
+            <Link to="/dashboard/categories/" className="text-gray-700 hover:underline hover:text-yellow-600 text-xs">Return to Category list</Link>
         </div>
       <form onSubmit={handleSubmit(handleCategoryUpdate)}>
         <div className="form-control">
@@ -107,7 +107,7 @@ const UpdateCategory = () => {
           )}
         </div>
 
-        <button className="btn bg-teal-700 w-full mt-2" disabled={isSubmitting}>
+        <button className="btn bg-orange-400 hover:shadow-none w-full mt-2" disabled={isSubmitting}>
           {isSubmitting ? "Updating..." : "Update Category"}
         </button>
       </form>

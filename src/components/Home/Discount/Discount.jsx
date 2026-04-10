@@ -1,11 +1,11 @@
 import { Link } from "react-router";
 import DiscountTimer from "./DiscountTimer";
-import paperImg from "../../../assets/images/2.png";
+import paperImg from "../../../assets/images/layer-1.png";
 import firstPaperImg from "../../../assets/images/layer-1(rotate).png"
 
 const Discount = () => {
   return (
-    <div>
+    <div className="mt-14">
       <img src={firstPaperImg} alt="" className="bg-orange-600"/>
       <div className="bg-orange-600 p-8 md:p-12 text-center text-white">
         <span className="inline-block px-4 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border border-teal-400/20">

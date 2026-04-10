@@ -21,7 +21,7 @@ const AddCategoryForm = () => {
   };
  
   const inputClass = (error) => {
-    return `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-info"}`;
+    return `input input-bordered bg-slate-100 text-black w-full mb-3 ${error ? "input-error" : "input-warning"}`;
   };
 
   return (
@@ -29,7 +29,7 @@ const AddCategoryForm = () => {
 
       <div className="flex justify-between items-center">
         <h1 className="text-slate-600 font-bold text-xl">Add Category</h1>
-        <Link to={"/dashboard/categories"} className="text-xs text-teal-600 hover:teal-500 hover:underline">Back to category view</Link>
+        <Link to={"/dashboard/categories"} className="text-xs text-gray-600 hover:text-yellow-600 hover:underline">Back to category view</Link>
       </div>
 
       <form onSubmit={handleSubmit(handleCategpryAdd)}>
@@ -67,7 +67,7 @@ const AddCategoryForm = () => {
           )}
         </div>
 
-        <button className="btn bg-teal-700 w-full mt-2">
+        <button className="btn bg-orange-400 hover:shadow-none w-full mt-2">
           {isSubmitting ? "Adding..." : "Add Category"}
         </button>
       </form>

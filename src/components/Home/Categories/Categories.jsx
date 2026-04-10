@@ -24,14 +24,14 @@ const Categories = () => {
       </div>
 
       {isLoading ? (
-        <div className="relative z-10 flex flex-col items-center justify-center">
+        <div className="relative mt-35 z-10 flex flex-col items-center justify-center">
           <img src={preLoader} alt="Loading..." className="w-20 h-20" />
           <p className="text-white mt-4 font-medium tracking-widest uppercase">
             Loading Categories...
           </p>
         </div>
       ) : (
-        <div className="container mx-auto relative z-10 px-4 md:px-20">
+        <div className="container mx-auto mt-25 relative z-10 px-4 md:px-20">
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={30}

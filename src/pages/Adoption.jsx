@@ -75,9 +75,7 @@ const Adoption = () => {
       {isLoading ? (
         <div className="relative z-10 flex flex-col items-center justify-center mt-20">
           <img src={preLoader} alt="Loading..." className="w-20 h-20" />
-          <p className="text-white mt-4 font-medium tracking-widest uppercase">
-            Loading Categories...
-          </p>
+          
         </div>
       ) : adoption.length > 0 ? (
         <div className="min-h-screen bg-teal-50/50 p-6">

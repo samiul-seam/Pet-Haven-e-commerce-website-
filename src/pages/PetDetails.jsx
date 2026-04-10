@@ -51,9 +51,6 @@ const PetDetails = () => {
     return (
       <div className="h-screen relative z-10 flex flex-col items-center justify-center">
         <img src={preLoader} alt="Loading..." className="w-20 h-20" />
-        <p className="text-white mt-4 font-medium tracking-widest uppercase">
-          Loading Categories...
-        </p>
       </div>
     );
   }
